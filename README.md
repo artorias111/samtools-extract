@@ -7,10 +7,11 @@ Extract genomic regions from a FASTA file using samtools based on coordinates pr
 1. **FASTA file**: A reference genome in FASTA format
 2. **Coordinates TSV file**: A tab-separated file with three columns:
    - Column 1: Contig/sequence name
-   - Column 2: Start position (1-based) (optional)
-   - Column 3: End position (inclusive) (optional)
+   - Column 2: Start position (optional)
+   - Column 3: End position (optional)
   
 If columns 2 and 3 are not provided, the entire contig is extracted, and saved as `contig.full.fa`. 
+Also note that the start and stopped can be flipped (for example, `contig1   500   300` is valid), if the strand is flipped, for example. The parser automatically figures this out. 
 
 Example coordinates file (`example_coordinates.tsv`):
 ```
