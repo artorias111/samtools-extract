@@ -1,7 +1,0 @@
-2025-07-01 12:32:47	-	ecstatic_perlman	-	24b5b443b216b3d0369bc875242edc1b	a096f169-d2ad-46fb-a92d-798ef5cfac11	nextflow run main.nf --fasta genome.fasta --labels example_coordinates.tsv
-2025-07-01 12:33:55	-	clever_lumiere	-	3ed0f82e86ae8aeba68cd95c280733cc	bd115dc3-c5cc-4a88-912f-3a4f9e041b3a	nextflow run main.nf --fasta genome.fasta --labels example_coordinates.tsv
-2025-07-01 12:34:23	-	cranky_lamarck	-	3ed0f82e86ae8aeba68cd95c280733cc	5a54712e-d88e-4413-bf48-0d95983eafee	nextflow run main.nf --fasta genome.fasta --labels example_coordinates.tsv
-2025-07-01 12:35:51	-	gigantic_torricelli	-	3ed0f82e86ae8aeba68cd95c280733cc	50e1315c-c490-45fb-9a94-c4fa2499e27d	nextflow run main.nf --fasta genome.fasta --labels example_coordinates.tsv
-2025-07-01 12:37:21	1.5s	jolly_curie	ERR	3ed0f82e86ae8aeba68cd95c280733cc	e4c3aeb2-bd2e-43ea-b00e-148037ddcccd	nextflow run main.nf --fasta genome.fasta --labels example_coordinates.tsv
-2025-07-01 12:45:25	2.2s	angry_mccarthy	ERR	3ed0f82e86ae8aeba68cd95c280733cc	f9ade45c-3a04-4347-a5e8-bbe046d8891f	nextflow run main.nf --fasta examples/genome.fasta --labels examples/example_coordinates.tsv
-2025-07-01 12:45:54	1.7s	agitated_pasteur	OK	3ed0f82e86ae8aeba68cd95c280733cc	02572389-67b9-4b6d-997b-9e22cd4e480a	nextflow run main.nf --fasta examples/genome.fasta --labels examples/example_coordinates.tsv
