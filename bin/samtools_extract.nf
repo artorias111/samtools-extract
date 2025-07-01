@@ -33,7 +33,7 @@ process split_coordinates {
                     out.write(f'{contig}\\t{start}\\t{stop}\\n')
                 if len(parts) == 1:
                     contig = parts[0]
-                    out.write(contig)
+                    out.write(f'{contig}\\n')
     """
 }
 
