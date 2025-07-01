@@ -31,7 +31,9 @@ process split_coordinates {
                     start = min(int(pos1), int(pos2))
                     stop = max(int(pos1), int(pos2))
                     out.write(f'{contig}\\t{start}\\t{stop}\\n')
-    
+                if len(parts) == 1:
+                    contig = parts[0]
+                    out.write(contig)
     """
 }
 
@@ -46,8 +48,25 @@ process samtools_extract {
 
     script:
     """
-    while IFS=\$'\\t' read -r contig start stop; do
-        samtools faidx ${fasta} \${contig}:\${start}-\${stop} > \${contig}.\${start}.\${stop}.fa
-    done < ${coordinates_file}
+    #!/usr/bin/env python3
+    import subprocess
+    import os
+    
+    with open('${coordinates_file}', 'r') as f:
+        for line in f:
+            parts = line.strip().split('\\t')
+            contig = parts[0]
+            
+            if len(parts) == 3 and parts[1] and parts[2]:
+                # Extract specific region
+                start, stop = parts[1], parts[2]
+                output_file = f'{contig}.{start}.{stop}.fa'
+                cmd = f'samtools faidx ${fasta} {contig}:{start}-{stop} > {output_file}'
+            else:
+                # Extract entire contig
+                output_file = f'{contig}.full.fa'
+                cmd = f'samtools faidx ${fasta} {contig} > {output_file}'
+            
+            subprocess.run(cmd, shell=True, check=True)
     """
 }
