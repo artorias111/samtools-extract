@@ -21,8 +21,17 @@ process split_coordinates {
     
     script:
     """
-    # Ensure the file is properly formatted
-    awk -F'\t' 'NF==3 {print \$1"\\t"\$2"\\t"\$3}' ${coordinates_file} > coordinates_parsed.txt
+    #!/usr/bin/env python3
+    with open('${coordinates_file}', 'r') as f:
+        with open('coordinates_parsed.txt', 'w') as out:
+            for line in f:
+                parts = line.strip().split()
+                if len(parts) == 3:
+                    contig, pos1, pos2 = parts
+                    start = min(int(pos1), int(pos2))
+                    stop = max(int(pos1), int(pos2))
+                    out.write(f'{contig}\\t{start}\\t{stop}\\n')
+    
     """
 }
 

@@ -1,6 +1,6 @@
 # Samtools Extract Workflow
 
-This Nextflow workflow extracts genomic regions from a FASTA file using samtools based on coordinates provided in a TSV file.
+Extract genomic regions from a FASTA file using samtools based on coordinates provided in a TSV file.
 
 ## Input Files
 
@@ -14,14 +14,14 @@ Example coordinates file (`example_coordinates.tsv`):
 ```
 contig1	100	200
 contig1	500	600
-contig2	1000	1100
+contig2	1200	1100
 contig3	50	150
 ```
 
 ## Usage
 
 ```bash
-nextflow run main.nf --fasta your_genome.fasta --labels your_coordinates.tsv
+nextflow run artorias111/samtools-extract --fasta your_genome.fasta --labels your_coordinates.tsv
 ```
 
 ## Output
@@ -41,7 +41,7 @@ Each extracted region will be named: `{contig}.{start}.{stop}.fa`
 - A FASTA file (will be automatically indexed)
 - A TSV file with coordinates
 
-## Example
+## Example for local 
 
 ```bash
 # Run with example files
