@@ -57,15 +57,18 @@ process samtools_extract {
             parts = line.strip().split('\\t')
             contig = parts[0]
             
+            # Replace forward slashes with hyphens for safe file naming
+            safe_contig = contig.replace('/', '-')
+            
             if len(parts) == 3 and parts[1] and parts[2]:
                 # Extract specific region
                 start, stop = parts[1], parts[2]
-                output_file = f'{contig}.{start}.{stop}.fa'
-                cmd = f'samtools faidx ${fasta} {contig}:{start}-{stop} > {output_file}'
+                output_file = f'{safe_contig}.{start}.{stop}.fa'
+                cmd = f'samtools faidx ${fasta} "{contig}":{start}-{stop} > {output_file}'
             else:
                 # Extract entire contig
-                output_file = f'{contig}.full.fa'
-                cmd = f'samtools faidx ${fasta} {contig} > {output_file}'
+                output_file = f'{safe_contig}.full.fa'
+                cmd = f'samtools faidx ${fasta} "{contig}" > {output_file}'
             
             subprocess.run(cmd, shell=True, check=True)
     """
